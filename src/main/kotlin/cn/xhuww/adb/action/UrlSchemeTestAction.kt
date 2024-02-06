@@ -9,7 +9,7 @@ class UrlSchemeTestAction : ADBAction() {
     override fun actionPerformed(e: AnActionEvent, projectRunData: ProjectRunData) {
         val testUrlScheme: (urlScheme: String) -> Unit = {
             val urlScheme = if (!it.contains("://")) "https://$it" else it
-            val shell = "am start -a android.intent.action.VIEW -d $urlScheme"
+            val shell = "am start -a android.intent.action.VIEW -d '$urlScheme'"
             projectRunData.device.executeShellCommand(shell, MessageReceiver())
         }
 
