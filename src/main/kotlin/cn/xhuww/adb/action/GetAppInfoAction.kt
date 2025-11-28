@@ -17,6 +17,7 @@ class GetAppInfoAction : ADBAction() {
                 override fun done(message: String) {
                     super.done(message)
                     val version = "${versionName.trim()}  ${message.trim()}"
+
                     AppInfoDialog(packageName, version).show()
                 }
             }

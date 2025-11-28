@@ -1,9 +1,8 @@
 <idea-plugin>
-    <id>cn.xhuww.ADBHelper</id>
+    <id>io.github.classops.ADBHelper</id>
     <name>ADBHelper</name>
-    <version>1.1.6</version>
-    <vendor email="xhuww2012@gmail.com" url="http://www.xhuww.cn">xhuww</vendor>
-    <idea-version since-build="181"/>
+    <vendor email="classops@outlook.com" url="https://github.com/classops/ADBHelper">classops</vendor>
+    <idea-version since-build="221"/>
 
     <description>
         <![CDATA[
@@ -21,6 +20,10 @@
     </description>
     <change-notes>
         <![CDATA[
+        <b>1.2.0</b>
+        <ul>
+            <li>Fix bugs, support Android Studio 2023+</li>
+        </ul>
         <b>1.1.6</b>
         <ul>
             <li>Add the function to get app information</li>
@@ -64,9 +67,11 @@
     <depends>org.jetbrains.android</depends>
 
     <actions>
-
-        <group id="adb_menu" text="ADB" description="ADB helper">
-            <add-to-group group-id="MainMenu" anchor="last"/>
+        <group id="adb_menu" text="ADB" description="ADB helper"
+               popup="true">
+            <add-to-group
+                    group-id="ToolsMenu"
+                    anchor="last"/>
 
             <action id="cn.xhuww.adb.action.GetAppInfoAction"
                     class="cn.xhuww.adb.action.GetAppInfoAction"

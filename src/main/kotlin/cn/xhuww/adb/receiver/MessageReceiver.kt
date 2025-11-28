@@ -8,7 +8,7 @@ class MessageReceiver : ADBReceiver() {
         Messages.showDialog(
             message,
             ADB_MESSAGE_TITLE,
-            arrayOf(Messages.CANCEL_BUTTON),
+            arrayOf(Messages.getCancelButton()),
             0,
             Messages.getInformationIcon()
         )
