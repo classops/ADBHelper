@@ -1,12 +1,13 @@
 <idea-plugin>
     <id>io.github.classops.ADBHelper</id>
-    <name>ADBHelper</name>
+    <name>ADB Toolkit</name>
     <vendor email="classops@outlook.com" url="https://github.com/classops/ADBHelper">classops</vendor>
     <idea-version since-build="221"/>
 
     <description>
         <![CDATA[
-        A plug-in based on ADB, the main functions :<br/>
+        A plugin based on ADB.<br/>
+        Menu -> Tools -> ADB Toolkit:<br/>
         <ul>
             <li>Get app information</li>
             <li>Get device information</li>
@@ -23,6 +24,7 @@
         <b>1.2.0</b>
         <ul>
             <li>Fix bugs, support Android Studio 2023+</li>
+            <li>fork from ADBHelper</li>
         </ul>
         <b>1.1.6</b>
         <ul>
@@ -67,7 +69,7 @@
     <depends>org.jetbrains.android</depends>
 
     <actions>
-        <group id="adb_menu" text="ADB" description="ADB helper"
+        <group id="adb_menu" text="ADB Toolkit" description="ADB Toolkit"
                popup="true">
             <add-to-group
                     group-id="ToolsMenu"

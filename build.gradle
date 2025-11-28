@@ -22,8 +22,8 @@ java {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    pluginName = 'ADBHelper'
-    version = '2023.1'
+    pluginName = 'ADB Toolkit'
+    version = '2022.1'
     updateSinceUntilBuild = false
     plugins = ['java', 'android']
 }
