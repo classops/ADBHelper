@@ -6,8 +6,7 @@
 
     <description>
         <![CDATA[
-        A plugin based on ADB.<br/>
-        Menu -> Tools -> ADB Toolkit:<br/>
+        A plugin based on ADB.  Menu -> Tools -> ADB Toolkit:<br/>
         <ul>
             <li>Get app information</li>
             <li>Get device information</li>
@@ -64,7 +63,6 @@
         ]]>
     </change-notes>
 
-    <depends>com.intellij.modules.java</depends>
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.android</depends>
 

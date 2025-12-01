@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '1.17.4'
-    id 'org.jetbrains.kotlin.jvm' version '1.7.20'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.24'
+    id 'org.jetbrains.intellij.platform' version '2.10.5'
 }
 
 group 'cn.xhuww'
@@ -9,32 +9,45 @@ version '1.2.0'
 
 repositories {
     mavenCentral()
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
 dependencies {
-
+    intellijPlatform {
+        androidStudio("2023.3.1.20")
+        plugin("org.jetbrains.android:233.10527.20")
+//        bundledPlugin("android")
+    }
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
-intellij {
-    pluginName = 'ADB Toolkit'
-    version = '2022.1'
-    updateSinceUntilBuild = false
-    plugins = ['java', 'android']
+intellijPlatform {
+    pluginConfiguration {
+        name = "ADB Toolkit"
+        ideaVersion {
+            sinceBuild = "233"
+        }
+    }
+}
+
+patchPluginXml {
+    sinceBuild = '233'
 }
 
 runIde {
-
+//    ideDir.set(file("/Applications/Android Studio.app/Contents"))
 }
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "17"
 }
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "17"
 }

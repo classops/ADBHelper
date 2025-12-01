@@ -2,10 +2,6 @@ package cn.xhuww.adb
 
 import com.android.ddmlib.AndroidDebugBridge
 import com.android.ddmlib.IDevice
-import com.android.tools.idea.gradle.project.model.AndroidModuleModel
-import com.android.tools.idea.run.DeviceCount
-import com.android.tools.idea.run.DeviceSelectionUtils
-import com.android.tools.idea.run.TargetDeviceFilter.UsbDeviceFilter
 import com.android.tools.idea.util.androidFacet
 import com.intellij.facet.ProjectFacetManager
 import com.intellij.openapi.diagnostic.thisLogger
@@ -67,6 +63,8 @@ class ProjectManager(private val project: Project) {
     private fun getFacet(facets: List<AndroidFacet>): AndroidFacet? {
         val appFacets = facets
             .mapNotNull { it.module.androidFacet }
+            .distinct()
+//            .mapNotNull { it.module.androidFacet }
 
         logger.info("facets: ${appFacets}")
 
@@ -82,7 +80,7 @@ class ProjectManager(private val project: Project) {
     private fun getConnectedDevice(): IDevice? {
         return if (connectedDevices.size > 1) {
             getAndroidFacet()?.let {
-                DeviceSelectionUtils.chooseRunningDevice(it, UsbDeviceFilter(), DeviceCount.SINGLE)?.firstOrNull()
+                DeviceChooserUtils.chooseRunningDevice(it, null)?.firstOrNull()
             }
         } else {
             connectedDevices.firstOrNull()
@@ -110,6 +108,12 @@ data class ProjectRunData(
     val device: IDevice
 ) {
     var packageName: String? = null
-        get() = AndroidModuleModel.get(facet)?.applicationId
+        get() = try {
+            com.android.tools.idea.model.AndroidModel.get(facet)?.applicationId
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+
         private set
 }
